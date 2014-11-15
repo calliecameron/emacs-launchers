@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ -z "${1}" ]; then
+    DIR='.'
+else
+    DIR="${1}"
+fi
+
+if [ ! -d "${DIR}" ]; then
+    echo "Not a directory: '${DIR}'"
+    exit 1
+else
+    emacs-daemon "${DIR}"
+fi

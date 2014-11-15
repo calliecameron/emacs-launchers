@@ -1,0 +1,21 @@
+# -*- shell-script -*-
+# Core logic for pipe/file in emacs daemon wrappers. Should be sourced
+# from a bash script which defines the function 'launch-emacs'.
+
+if [ -z "${1}" ] && ! tty -s; then
+    # If there are no args, and stdin might be a pipe, save all data
+    # from stdin, and try to open it.
+
+    TMPFILE="$(readlink -f "$(mktemp --tmpdir=. 'pipe-XXXXXXXX')")"
+    cat > "${TMPFILE}"
+    if [ -s "${TMPFILE}" ]; then
+        # Data was read from stdin
+        launch-emacs "${TMPFILE}"
+        exit
+    else
+        # There was nothing on stdin after all
+        rm "${TMPFILE}"
+    fi
+fi
+
+launch-emacs "${@}"

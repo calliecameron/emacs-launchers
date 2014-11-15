@@ -1,0 +1,13 @@
+#!/bin/bash
+# Wrapper for Emacs daemon that always opens a new blocking frame
+
+function launch-emacs()
+{
+    if [ -z "${DISPLAY}" ]; then
+        emacsclient --alternate-editor="" -t "${@}" 2>/dev/null
+    else
+        emacsclient --alternate-editor="" -c "${@}" 2>/dev/null
+    fi
+}
+
+source emacs-daemon-core

@@ -1,0 +1,12 @@
+#!/bin/bash
+# Prompt to shut down the Emacs daemon
+
+if [ -z "${DISPLAY}" ]; then
+    FRAME='-t'
+else
+    FRAME='-c'
+fi
+
+if ! emacsclient "${FRAME}" -e '(save-buffers-kill-emacs)' 2>/dev/null; then
+    echo 'No Emacs daemon to kill.'
+fi

@@ -1,0 +1,21 @@
+#!/bin/bash
+# Wrapper for Emacs daemon that opens a file on the PATH in an
+# existing frame, if possible
+
+function usage()
+{
+    echo "Usage: $(basename "${0}") file-on-path"
+    exit 1
+}
+
+test -z "${1}" && usage
+
+CMD="${1}"
+
+if env which "${CMD}" &>/dev/null; then
+    TARGET="$(env which "${CMD}")"
+    emacs-daemon "${TARGET}"
+else
+    echo "Command '${CMD}' not found on PATH"
+    exit 1
+fi
