@@ -6,4 +6,5 @@ function launch-emacs()
     emacsclient --alternate-editor="" -t "${@}" 2>/dev/null
 }
 
-source emacs-daemon-core
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "${DIR}/emacs-daemon-core"
