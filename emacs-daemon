@@ -1,10 +1,9 @@
 #!/bin/bash
 # Wrapper for Emacs daemon that opens in an existing frame, if possible
 
-function launch-emacs()
-{
+function launch-emacs() {
     if ! emacsclient -n "${@}" 2>/dev/null; then
-        if [ -z "${DISPLAY}" ]; then
+        if [ -z "${DISPLAY}" ] && [ "$(uname -o)" != 'Cygwin' ]; then
             emacsclient --alternate-editor="" -t "${@}" 2>/dev/null
         else
             emacsclient -n --alternate-editor="" -c "${@}" 2>/dev/null

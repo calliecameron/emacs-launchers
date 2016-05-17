@@ -2,8 +2,7 @@
 # Wrapper for Emacs daemon that opens a file on the PATH in an
 # existing frame, if possible
 
-function usage()
-{
+function usage() {
     echo "Usage: $(basename "${0}") file-on-path"
     exit 1
 }

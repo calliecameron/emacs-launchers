@@ -1,24 +1,34 @@
 Emacs Launcher Scripts
 ======================
 
-The Emacs daemon is fantastic, but awkward to use. These scripts make it more pleasant.
+The Emacs daemon is fantastic, but awkward to use. These scripts make
+it more pleasant.
 
 In each case:
- - if the daemon is already running, use it; otherwise, launch a new daemon
+ - if the daemon is already running, use it; otherwise, launch a new
+   daemon
  - if the script has arguments, open each of those files
  - if the script has no arguments:
-   - check if data is being piped/redirected to stdin; if so, read the data and open it (so you can do things like `ls | emacs-daemon`, for example)
-   - else, open a new frame or switch to an existing one (script-specific)
+   - check if data is being piped/redirected to stdin; if so, read the
+     data and open it (so you can do things like `ls | emacs-daemon`,
+     for example)
+   - else, open a new frame or switch to an existing one
+     (script-specific)
 
-When opening a new frame, the scripts will detect whether you are in X, and open the appropriate kind of frame. All the scripts also work in term.el buffers from inside Emacs.
+When opening a new frame, the scripts will detect whether you are in
+X, and open the appropriate kind of frame. All the scripts also work
+in term.el buffers from inside Emacs.
 
 The difference between the scripts is how/if they open a new frame:
  - `emacs-daemon` opens files in an existing frame, if possible
  - `emacs-daemon-new-frame` always opens files in a new frame
  - `emacs-daemon-terminal` always opens a new ncurses frame, even in X
- - `emacs-daemon-blocking` always opens a blocking frame, even in X (useful as `EDITOR`)
- - `emacs-daemon-path-open` searches for its arguments on `PATH`, rather than treating them as a normal path
- - `emacs-daemon-dired` is like `emacs-daemon`, but only for directories
+ - `emacs-daemon-blocking` always opens a blocking frame, even in X
+   (useful as `EDITOR`)
+ - `emacs-daemon-path-open` searches for its arguments on `PATH`,
+   rather than treating them as a normal path
+ - `emacs-daemon-dired` is like `emacs-daemon`, but only for
+   directories
 
 One additional script:
 - `emacs-daemon-kill` prompts to shutdown any existing daemon

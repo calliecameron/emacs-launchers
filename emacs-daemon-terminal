@@ -1,8 +1,7 @@
 #!/bin/bash
 # Wrapper for Emacs daemon that always launches a terminal frame
 
-function launch-emacs()
-{
+function launch-emacs() {
     emacsclient --alternate-editor="" -t "${@}" 2>/dev/null
 }
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 # Prompt to shut down the Emacs daemon
 
-if [ -z "${DISPLAY}" ]; then
+if [ -z "${DISPLAY}" ] && [ "$(uname -o)" != 'Cygwin' ]; then
     FRAME='-t'
 else
     FRAME='-c'

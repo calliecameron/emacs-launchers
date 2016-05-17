@@ -1,5 +1,5 @@
 # -*- shell-script -*-
-# Core logic for pipe/file in emacs daemon wrappers. Should be sourced
+# Core logic for pipe/file in Emacs daemon wrappers. Should be sourced
 # from a bash script which defines the function 'launch-emacs'.
 
 if [ -z "${1}" ] && ! tty -s; then

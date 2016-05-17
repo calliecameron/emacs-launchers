@@ -1,9 +1,8 @@
 #!/bin/bash
 # Wrapper for Emacs daemon that always opens a new blocking frame
 
-function launch-emacs()
-{
-    if [ -z "${DISPLAY}" ]; then
+function launch-emacs() {
+    if [ -z "${DISPLAY}" ]  && [ "$(uname -o)" != 'Cygwin' ]; then
         emacsclient --alternate-editor="" -t "${@}" 2>/dev/null
     else
         emacsclient --alternate-editor="" -c "${@}" 2>/dev/null
