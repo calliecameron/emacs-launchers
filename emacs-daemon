@@ -4,7 +4,13 @@
 function launch-emacs() {
     if ! emacsclient -n "${@}" 2>/dev/null; then
         if [ -z "${DISPLAY}" ] && [ "$(uname -o)" != 'Cygwin' ]; then
-            emacsclient --alternate-editor="" -t "${@}" 2>/dev/null
+            if [ ! -z "${INSIDE_EMACS}" ]; then
+                # Reuse existing frame
+                emacsclient -n --alternate-editor="" "${@}" 2>/dev/null
+            else
+                # Create blocking frame if it's the first one
+                emacsclient --alternate-editor="" -t "${@}" 2>/dev/null
+            fi
         else
             emacsclient -n --alternate-editor="" -c "${@}" 2>/dev/null
         fi
