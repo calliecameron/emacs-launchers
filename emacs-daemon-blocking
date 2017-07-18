@@ -3,7 +3,13 @@
 
 function launch-emacs() {
     if [ -z "${DISPLAY}" ]  && [ "$(uname -o)" != 'Cygwin' ]; then
-        emacsclient --alternate-editor="" -t "${@}" 2>/dev/null
+        if [ ! -z "${INSIDE_EMACS}" ]; then
+            # Reuse existing frame, but wait for buffer
+            emacsclient --alternate-editor="" "${@}" 2>/dev/null
+        else
+            # Create whole new frame if it's the first one
+            emacsclient --alternate-editor="" -t "${@}" 2>/dev/null
+        fi
     else
         emacsclient --alternate-editor="" -c "${@}" 2>/dev/null
     fi
