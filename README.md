@@ -1,5 +1,4 @@
-Emacs Launcher Scripts
-======================
+# Emacs Launcher Scripts
 
 The Emacs daemon is fantastic, but awkward to use. These scripts make
 it more pleasant.
@@ -34,28 +33,14 @@ One additional script:
 - `emacs-daemon-kill` prompts to shutdown any existing daemon
 
 
-Installation
-------------
+## Installation
 
-Add this directory to your `PATH`.
+Set `EMACS_LAUNCHERS_DIR` to point to this directory, then source `env.sh`. Optionally source `alias.sh` too.
 
+Make emacs-daemon the default program for text files in X:
 
-Configuration
--------------
+```shell
+$ xdg-desktop-menu install --novendor emacs-daemon.desktop
 
-My shell configuration:
-
-    export EDITOR='emacs-daemon-blocking'
-
-    alias e='emacs-daemon'
-    alias en='emacs-daemon-new-frame'
-    alias et='emacs-daemon-terminal'
-    alias d='emacs-daemon-dired'
-    alias ep='emacs-daemon-path-open'
-    alias ek='emacs-daemon-kill'
-
-And make emacs-daemon the default program for text files in X:
-
-    xdg-desktop-menu install --novendor emacs-daemon.desktop
-
-    xdg-mime default emacs-daemon.desktop text/english text/plain text/x-makefile text/x-c++hdr text/x-c++src text/x-chdr text/x-csrc text/x-java text/x-moc text/x-pascal text/x-tcl text/x-tex application/x-shellscript text/x-c text/x-c++
+$ xdg-mime default emacs-daemon.desktop text/english text/plain text/x-makefile text/x-c++hdr text/x-c++src text/x-chdr text/x-csrc text/x-java text/x-moc text/x-pascal text/x-tcl text/x-tex application/x-shellscript text/x-c text/x-c++
+```
