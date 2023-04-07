@@ -1,4 +1,4 @@
-# -*- shell-script -*-
+# shellcheck shell=bash
 # Core logic for pipe/file in Emacs daemon wrappers. Should be sourced
 # from a bash script which defines the function 'launch-emacs'.
 
@@ -7,7 +7,7 @@ if [ -z "${1}" ] && ! tty -s; then
     # from stdin, and try to open it.
 
     TMPFILE="$(readlink -f "$(mktemp --tmpdir=. 'pipe-XXXXXXXX')")"
-    cat > "${TMPFILE}"
+    cat >"${TMPFILE}"
     if [ -s "${TMPFILE}" ]; then
         # Data was read from stdin
         launch-emacs "${TMPFILE}"

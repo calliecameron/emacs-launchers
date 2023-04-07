@@ -2,8 +2,8 @@
 # Wrapper for Emacs daemon that always opens a new blocking frame
 
 function launch-emacs() {
-    if [ -z "${DISPLAY}" ]  && [ "$(uname -o)" != 'Cygwin' ]; then
-        if [ ! -z "${INSIDE_EMACS}" ]; then
+    if [ -z "${DISPLAY}" ] && [ "$(uname -o)" != 'Cygwin' ]; then
+        if [ -n "${INSIDE_EMACS}" ]; then
             # Reuse existing frame, but wait for buffer
             emacsclient --alternate-editor="" "${@}" 2>/dev/null
         else
@@ -15,5 +15,5 @@ function launch-emacs() {
     fi
 }
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${DIR}/emacs-daemon-core"

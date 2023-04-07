@@ -4,7 +4,7 @@
 function launch-emacs() {
     if ! emacsclient -n "${@}" 2>/dev/null; then
         if [ -z "${DISPLAY}" ] && [ "$(uname -o)" != 'Cygwin' ]; then
-            if [ ! -z "${INSIDE_EMACS}" ]; then
+            if [ -n "${INSIDE_EMACS}" ]; then
                 # Reuse existing frame
                 emacsclient -n --alternate-editor="" "${@}" 2>/dev/null
             else
@@ -17,5 +17,5 @@ function launch-emacs() {
     fi
 }
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${DIR}/emacs-daemon-core"
