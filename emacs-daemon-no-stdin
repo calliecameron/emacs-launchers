@@ -1,0 +1,4 @@
+#!/bin/bash
+# Wrapper for Emacs daemon that doesn't try to read from stdin
+
+emacs-daemon "${@}" </dev/null
