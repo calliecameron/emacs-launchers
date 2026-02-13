@@ -9,6 +9,6 @@ fi
 if [ ! -d "${DIR}" ]; then
     echo "Not a directory: '${DIR}'"
     exit 1
-else
-    emacs-daemon "${DIR}"
 fi
+
+emacs-daemon "${DIR}"

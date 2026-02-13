@@ -1,0 +1,15 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: v0.1.8
+_src_path: https://github.com/calliecameron/copier-template
+author_name: Callie Cameron
+copyright_start_year: '2014'
+exports_requirements_txt: false
+github_repo: calliecameron/emacs-launchers
+max_python_version: '3.14'
+min_python_version: '3.14'
+project_name: emacs-launchers
+user_has_css: false
+user_has_html: false
+user_has_javascript: false
+user_uses_bats: false
+user_uses_pytest: false

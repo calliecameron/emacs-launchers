@@ -1,0 +1,89 @@
+[project]
+name = "emacs-launchers"
+version = "0.0.0"
+readme = "README.md"
+requires-python = "==3.14.*"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = []
+
+[dependency-groups]
+dev = [
+  "ast-grep-cli==0.40.5",
+  "bump-my-version==1.2.6",
+  "cookiecutter==2.6.0",
+  "copier==9.11.3",
+  "copier-template-extensions==0.3.3",
+  "frozendict==2.4.7",
+  "gha-update==0.2.0",
+  "gitlint==0.19.1",
+  "identify==2.6.16",
+  "licensecheck==2025.1.0",
+  "mypy==1.19.1",
+  "packaging==26.0",
+  "pre-commit==4.5.1",
+  "ruff==0.15.1",
+  "shellcheck-py==0.11.0.1",
+  "tombi==0.7.28",
+  "typos==1.43.4",
+  "yamllint==1.38.0",
+  "zizmor==1.22.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.26,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.bumpversion]
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search = "version = \"{current_version}\""
+replace = "version = \"{new_version}\""
+
+[tool.mypy]
+explicit_package_bases = true
+mypy_path = "stubs"
+namespace_packages = true
+pretty = true
+scripts_are_modules = true
+strict = true
+
+[tool.ruff]
+namespace-packages = [
+  ".template_files",
+]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "C90",  # mccabe:*
+  "D1",  # pydocstyle:undocumented-*
+  "E741",  # pycodestyle:ambiguous-variable-name
+  "EM",  # flake8-errmsg:*
+  "FIX",  # flake8-fixme:*
+  "INP001",  # flake8-no-pep420:implicit-namespace-package
+  "PLR09",  # refactor:too-many-*
+  "PTH",  # flake8-use-pathlib:*
+  "PYI025",  # flake8-pyi:unaliased-collections-abc-set-import
+  "S603",  # flake8-bandit:subprocess-without-shell-equals-true
+  "S607",  # flake8-bandit:start-process-with-partial-path
+  "T20",  # flake8-print:*
+  "TD",  # flake8-todos:*
+  "TRY003",  # tryceratops:raise-vanilla-args
+  "TRY301",  # tryceratops:raise-within-try
+]
+
+[tool.tombi]
+
+[tool.typos]
+files.extend-exclude = [
+  "/.copier-answers.yml",
+]
+default.extend-ignore-re = [
+  "(?Rm)^.*(#|//)\\s*spellchecker: *disable-line$",
+  "(?s)(#|//)\\s*spellchecker:* off.*?\\n\\s*(#|//)\\s*spellchecker:* on",
+  "(#|//)\\s*spellchecker:* disable-next-line\\n.*",
+]
+
+[tool.uv]
+package = false
