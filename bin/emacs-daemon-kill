@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Prompt to shut down the Emacs daemon
 
 if [ -z "${DISPLAY}" ] && [ "$(uname -o)" != 'Cygwin' ]; then

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Wrapper for Emacs daemon that opens a file on the PATH in an existing frame,
 # if possible
 

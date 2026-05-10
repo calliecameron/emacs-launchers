@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Wrapper for Emacs daemon that always opens a new blocking frame
 
 function launch-emacs() {
